@@ -1,13 +1,23 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using ChampionStatistics.RiotObject;
+using Key = System.Windows.Input.Key;
 
 namespace ChampionStatistics
 {
     public partial class MainWindow : Window
     {
+        private ChampionInfo[] Champions { get; }
+
         public MainWindow()
         {
             this.InitializeComponent();
+            this.Champions = ChampionInfo.FromJson(File.ReadAllText("./championInfo.json"));
         }
 
         private void InputBoxTextChanged(object sender, TextChangedEventArgs e)
@@ -15,6 +25,61 @@ namespace ChampionStatistics
             var textbox = (TextBox) sender;
 
 
+        }
+
+        private void InputBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+
+            if (e.Key == Key.Enter)
+            {
+                this.SearchChampion(textbox.Text.Trim());
+                textbox.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void SearchChampion(string championName)
+        {
+            var champion = this.Champions.FirstOrDefault(x => x.Name == championName);
+
+            if (champion == null)
+            {
+                return;
+            }
+
+            this.MainGrid.Visibility = Visibility.Visible;
+            this.MainGrid.DataContext = ChampionModel.Parse(champion);
+            this.Stats.Children.Clear();
+            var stats = this.ParseStatNames(champion.Stats.ToArray()).Select(x => new[]
+            {
+                new TextBlock
+                {
+                    Text = x.Key,
+                    HorizontalAlignment = HorizontalAlignment.Left
+                },
+                new TextBlock
+                {
+                    Text = x.Value.ToString(CultureInfo.InvariantCulture),
+                    HorizontalAlignment = HorizontalAlignment.Right
+                }
+            });
+
+            foreach (var stat in stats)
+            {
+                var grid = new Grid();
+
+                foreach (var textBlock in stat)
+                {
+                    grid.Children.Add(textBlock);
+                }
+
+                this.Stats.Children.Add(grid);
+            }
+        }
+
+        private KeyValuePair<string,double>[] ParseStatNames(KeyValuePair<string,double>[] stats)
+        {
+            return stats;
         }
     }
 }

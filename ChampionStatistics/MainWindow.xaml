@@ -7,6 +7,21 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TextBox x:Name="InputBox" Height="45" Width="175" BorderBrush="Aqua" BorderThickness="0,0,0,1" 
-                 TextAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="SlateGray" CaretBrush="SlateGray" TextChanged="InputBoxTextChanged"/>
+                 TextAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="SlateGray"
+                 CaretBrush="SlateGray" TextChanged="InputBoxTextChanged" KeyDown="InputBoxKeyDown"/>
+        <Grid x:Name="MainGrid" Visibility="Hidden">
+            <Rectangle Height="80" Width="80" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Stroke="Crimson">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="{Binding ChampionImage}" />
+                </Rectangle.Fill>
+            </Rectangle>
+            <StackPanel Orientation="Horizontal" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <TextBlock Text="{Binding Name}" FontSize="32" Foreground="Crimson"/>
+                <TextBlock Text="{Binding Title}" FontSize="22" Foreground="DarkRed" Margin="10,0,0,0"/>
+            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" Height="300" Margin="10,100,0,0" Width="250" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <StackPanel x:Name="Stats"/>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Window>

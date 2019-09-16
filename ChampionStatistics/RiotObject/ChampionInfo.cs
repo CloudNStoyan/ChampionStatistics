@@ -13,7 +13,7 @@ namespace ChampionStatistics.RiotObject
 
         [JsonProperty("key")]
         [JsonConverter(typeof(ParseStringConverter))]
-        public int Key { get; set; }
+        public long Key { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -265,9 +265,6 @@ namespace ChampionStatistics.RiotObject
         [JsonProperty("costBurn")]
         public string CostBurn { get; set; }
 
-        [JsonProperty("datavalues")]
-        public string Datavalues { get; set; }
-
         [JsonProperty("effect")]
         public double[][] Effect { get; set; }
 
@@ -395,7 +392,7 @@ namespace ChampionStatistics.RiotObject
         };
     }
 
-    internal class GroupConverter : JsonConverter
+    public class GroupConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Group) || t == typeof(Group?);
 
@@ -441,7 +438,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly GroupConverter Singleton = new GroupConverter();
     }
 
-    internal class SpriteConverter : JsonConverter
+    public class SpriteConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Sprite) || t == typeof(Sprite?);
 
@@ -597,7 +594,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly SpriteConverter Singleton = new SpriteConverter();
     }
 
-    internal class ParseStringConverter : JsonConverter
+    public class ParseStringConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(long) || t == typeof(long?);
 
@@ -628,7 +625,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly ParseStringConverter Singleton = new ParseStringConverter();
     }
 
-    internal class PartypeConverter : JsonConverter
+    public class PartypeConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Partype) || t == typeof(Partype?);
 
@@ -719,7 +716,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly PartypeConverter Singleton = new PartypeConverter();
     }
 
-    internal class OfConverter : JsonConverter
+    public class OfConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Of) || t == typeof(Of?);
 
@@ -765,7 +762,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly OfConverter Singleton = new OfConverter();
     }
 
-    internal class IfSummonerSpellConverter : JsonConverter
+    public class IfSummonerSpellConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(IfSummonerSpell) || t == typeof(IfSummonerSpell?);
 
@@ -866,7 +863,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly IfSummonerSpellConverter Singleton = new IfSummonerSpellConverter();
     }
 
-    internal class BlockTypeConverter : JsonConverter
+    public class BlockTypeConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(BlockType) || t == typeof(BlockType?);
 
@@ -1217,7 +1214,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly BlockTypeConverter Singleton = new BlockTypeConverter();
     }
 
-    internal class MapUnionConverter : JsonConverter
+    public class MapUnionConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(MapUnion) || t == typeof(MapUnion?);
 
@@ -1306,7 +1303,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly MapUnionConverter Singleton = new MapUnionConverter();
     }
 
-    internal class MapEnumConverter : JsonConverter
+    public class MapEnumConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(MapEnum) || t == typeof(MapEnum?);
 
@@ -1382,7 +1379,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly MapEnumConverter Singleton = new MapEnumConverter();
     }
 
-    internal class ModeConverter : JsonConverter
+    public class ModeConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Mode) || t == typeof(Mode?);
 
@@ -1493,7 +1490,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly ModeConverter Singleton = new ModeConverter();
     }
 
-    internal class RecommendedTypeConverter : JsonConverter
+    public class RecommendedTypeConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(RecommendedType) || t == typeof(RecommendedType?);
 
@@ -1539,7 +1536,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly RecommendedTypeConverter Singleton = new RecommendedTypeConverter();
     }
 
-    internal class CostTypeConverter : JsonConverter
+    public class CostTypeConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(CostType) || t == typeof(CostType?);
 
@@ -1690,7 +1687,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly CostTypeConverter Singleton = new CostTypeConverter();
     }
 
-    internal class CoeffConverter : JsonConverter
+    public class CoeffConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Coeff) || t == typeof(Coeff?);
 
@@ -1728,7 +1725,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly CoeffConverter Singleton = new CoeffConverter();
     }
 
-    internal class KeyConverter : JsonConverter
+    public class KeyConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Key) || t == typeof(Key?);
 
@@ -1789,7 +1786,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly KeyConverter Singleton = new KeyConverter();
     }
 
-    internal class LinkConverter : JsonConverter
+    public class LinkConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Link) || t == typeof(Link?);
 
@@ -1890,7 +1887,7 @@ namespace ChampionStatistics.RiotObject
         public static readonly LinkConverter Singleton = new LinkConverter();
     }
 
-    internal class TagConverter : JsonConverter
+    public class TagConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Tag) || t == typeof(Tag?);
 
