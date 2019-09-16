@@ -6,6 +6,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="InputBox" Height="45" Width="175" BorderBrush="Aqua" BorderThickness="0,0,0,1" 
+                 TextAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="SlateGray" CaretBrush="SlateGray" TextChanged="InputBoxTextChanged"/>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace ChampionStatistics
 {
@@ -7,6 +8,13 @@ namespace ChampionStatistics
         public MainWindow()
         {
             this.InitializeComponent();
+        }
+
+        private void InputBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox) sender;
+
+
         }
     }
 }
