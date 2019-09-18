@@ -77,9 +77,60 @@ namespace ChampionStatistics
             }
         }
 
-        private KeyValuePair<string,double>[] ParseStatNames(KeyValuePair<string,double>[] stats)
+        private KeyValuePair<string, double>[] ParseStatNames(KeyValuePair<string, double>[] stats)
         {
-            return stats;
+            return stats
+                .Select(keyValuePair =>
+                    new KeyValuePair<string, double>(this.ConvertStatName(keyValuePair.Key), keyValuePair.Value)).ToArray();
+        }
+
+        private string ConvertStatName(string name)
+        {
+            switch (name)
+            {
+                case "hp":
+                    return "Health";
+                case "hpperlevel":
+                    return "Health Per Level";
+                case "mp":
+                    return "Mana";
+                case "mpperlevel":
+                    return "Mana Per Level";
+                case "movespeed":
+                    return "Movement Speed";
+                case "armor":
+                    return "Armor";
+                case "armorperlevel":
+                    return "Armor Per Level";
+                case "spellblock":
+                    return "Magic Resist";
+                case "spellblockperlevel":
+                    return "Magic Resist Per Level";
+                case "attackrange":
+                    return "Range";
+                case "hpregen":
+                    return "Health Regen";
+                case "hpregenperlevel":
+                    return "Health Regen Per Level";
+                case "mpregen":
+                    return "Mana Regen";
+                case "mpregenperlevel":
+                    return "Mana Regen Per Level";
+                case "crit":
+                    return "Critical Strike";
+                case "critperlevel":
+                    return "Critical Striker Per Level";
+                case "attackdamage":
+                    return "Attack Damage";
+                case "attackdamageperlevel":
+                    return "Attack Damage Per Level";
+                case "attackspeed":
+                    return "Attack Speed";
+                case "attackspeedperlevel":
+                    return "Attack Speed Per Level";
+                default:
+                    return name;
+            }
         }
     }
 }
