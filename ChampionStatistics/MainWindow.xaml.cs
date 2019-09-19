@@ -13,11 +13,17 @@ namespace ChampionStatistics
     public partial class MainWindow : Window
     {
         private ChampionInfo[] Champions { get; }
+        private DDragon MainDDragon { get; }
 
         public MainWindow()
         {
             this.InitializeComponent();
             this.Champions = ChampionInfo.FromJson(File.ReadAllText("./championInfo.json"));
+            this.MainDDragon = new DDragon(Path.GetFullPath("./ddragontai-9.18.1/"), "9.18.1");
+
+            MessageBox.Show(this.MainDDragon.Img.Champion("Aatrox.png"));
+
+            this.InputBox.Focus();
         }
 
         private void InputBoxTextChanged(object sender, TextChangedEventArgs e)
@@ -48,7 +54,7 @@ namespace ChampionStatistics
             }
 
             this.MainGrid.Visibility = Visibility.Visible;
-            this.MainGrid.DataContext = ChampionModel.Parse(champion);
+            this.MainGrid.DataContext = ChampionModel.Parse(champion, this.MainDDragon);
             this.Stats.Children.Clear();
             var stats = this.ParseStatNames(champion.Stats.ToArray()).Select(x => new[]
             {
@@ -130,6 +136,17 @@ namespace ChampionStatistics
                     return "Attack Speed Per Level";
                 default:
                     return name;
+            }
+        }
+
+        private void MainWindowKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape && this.MainGrid.Visibility == Visibility.Visible)
+            {
+                this.MainGrid.Visibility = Visibility.Hidden;
+                this.InputBox.Visibility = Visibility.Visible;
+
+                this.InputBox.Focus();
             }
         }
     }

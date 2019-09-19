@@ -12,13 +12,14 @@ namespace ChampionStatistics
         public Uri Image { get; set; }
         public KeyValuePair<string,double>[] Stats { get; set; }
 
-        public static ChampionModel Parse(ChampionInfo championInfo)
+        public static ChampionModel Parse(ChampionInfo championInfo, DDragon dDragon)
         {
             return new ChampionModel
             {
                 Name = championInfo.Name,
                 Stats = championInfo.Stats.ToArray(),
-                Title = championInfo.Title
+                Title = championInfo.Title,
+                Image = new Uri(dDragon.Img.Champion(championInfo.Image.Full))
             };
         }
     }

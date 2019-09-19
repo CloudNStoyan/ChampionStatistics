@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" KeyDown="MainWindowKeyDown">
     <Grid>
         <TextBox x:Name="InputBox" Height="45" Width="175" BorderBrush="Aqua" BorderThickness="0,0,0,1" 
                  TextAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="SlateGray"
@@ -12,7 +12,7 @@
         <Grid x:Name="MainGrid" Visibility="Hidden">
             <Rectangle Height="80" Width="80" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Stroke="Crimson">
                 <Rectangle.Fill>
-                    <ImageBrush ImageSource="{Binding ChampionImage}" />
+                    <ImageBrush ImageSource="{Binding Image}" />
                 </Rectangle.Fill>
             </Rectangle>
             <StackPanel Orientation="Horizontal" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">

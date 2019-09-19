@@ -50,17 +50,17 @@ namespace ChampionStatistics.RiotObject
             public ImgObject(DDragon dragon)
             {
                 this.Dragon = dragon;
-                this.ImgFolder = dragon.DataDragonFolder + "/" + dragon.DataDragonFolder + "/img";
+                this.ImgFolder = Path.Combine(dragon.DataDragonFolder + "/" + dragon.DataDragonVersion + "/img");
             }
 
-            public string Champion(string champion) => this.ImgFolder + "/champion/" + champion;
+            public string Champion(string champion) => Path.Combine(this.ImgFolder + "/champion/" + champion);
             public string Item(string item) => this.ImgFolder + "/item/" + item;
             public string Map(string map) => this.ImgFolder + "/map/" + map;
             public string Mission(string mission) => this.ImgFolder + "/mission/" + mission;
             public string Passive(string passive) => this.ImgFolder + "/passive/" + passive;
             public string ProfileIcon(string profileIcon) => this.ImgFolder + "/profileicon/" + profileIcon;
             public string Spell(string spell) => this.ImgFolder + "/spell/" + spell;
-            public string Sprite(string sprite) => this.ImgFolder + "sprite" + sprite;
+            public string Sprite(string sprite) => this.ImgFolder + "/sprite/" + sprite;
         }
     }
 }
