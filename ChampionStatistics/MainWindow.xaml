@@ -19,9 +19,17 @@
                 <TextBlock Text="{Binding Name}" FontSize="32" Foreground="Crimson"/>
                 <TextBlock Text="{Binding Title}" FontSize="22" Foreground="DarkRed" Margin="10,0,0,0"/>
             </StackPanel>
+            <TextBlock Margin="100,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Tag}"/>
             <ScrollViewer VerticalScrollBarVisibility="Hidden" Height="300" Margin="10,100,0,0" Width="250" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <StackPanel x:Name="Stats"/>
             </ScrollViewer>
+            <TabControl VerticalAlignment="Top" HorizontalAlignment="Left" Margin="270,100,0,0">
+                <TabItem Header="Lore">
+                    <Grid Height="300" Width="500">
+                        <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Lore}"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
         </Grid>
     </Grid>
 </Window>

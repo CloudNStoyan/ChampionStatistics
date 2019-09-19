@@ -21,8 +21,6 @@ namespace ChampionStatistics
             this.Champions = ChampionInfo.FromJson(File.ReadAllText("./championInfo.json"));
             this.MainDDragon = new DDragon(Path.GetFullPath("./ddragontai-9.18.1/"), "9.18.1");
 
-            MessageBox.Show(this.MainDDragon.Img.Champion("Aatrox.png"));
-
             this.InputBox.Focus();
         }
 
