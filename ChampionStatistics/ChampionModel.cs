@@ -13,6 +13,7 @@ namespace ChampionStatistics
         public KeyValuePair<string,double>[] Stats { get; set; }
         public string Lore { get; set; }
         public string Tag { get; set; }
+        public string Tips { get; set; }
 
         public static ChampionModel Parse(ChampionInfo championInfo, DDragon dDragon)
         {
@@ -23,7 +24,8 @@ namespace ChampionStatistics
                 Title = championInfo.Title,
                 Image = new Uri(dDragon.Img.Champion(championInfo.Image.Full)),
                 Lore = championInfo.Lore,
-                Tag = string.Join(", ", championInfo.Tags.Select(x => x.ToString()))
+                Tag = string.Join(", ", championInfo.Tags.Select(x => x.ToString())),
+                Tips = "Ally tips:\r\n" + string.Join("\r\n", championInfo.Allytips) + "\r\nEnemy tips:\r\n" + string.Join("\r\n", championInfo.Enemytips)
             };
         }
     }

@@ -29,6 +29,11 @@
                         <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Lore}"/>
                     </Grid>
                 </TabItem>
+                <TabItem Header="Tips">
+                    <Grid Height="300" Width="500">
+                        <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Tips}"/>
+                    </Grid>
+                </TabItem>
             </TabControl>
         </Grid>
     </Grid>
