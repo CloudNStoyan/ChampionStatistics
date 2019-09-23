@@ -15,6 +15,7 @@ namespace ChampionStatistics
         public string Tag { get; set; }
         public string Tips { get; set; }
         public Uri[] Spells { get; set; }
+        public int SkinCount { get; set; }
 
         public static ChampionModel Parse(ChampionInfo championInfo, DDragon dDragon)
         {
@@ -27,7 +28,8 @@ namespace ChampionStatistics
                 Lore = championInfo.Lore,
                 Tag = string.Join(", ", championInfo.Tags.Select(x => x.ToString())),
                 Tips = "Ally tips:\r\n" + string.Join("\r\n", championInfo.Allytips) + "\r\nEnemy tips:\r\n" + string.Join("\r\n", championInfo.Enemytips),
-                Spells = championInfo.Spells.Select(x => new Uri(dDragon.Img.Spell(x.Image.Full))).ToArray()
+                Spells = championInfo.Spells.Select(x => new Uri(dDragon.Img.Spell(x.Image.Full))).ToArray(),
+                SkinCount = championInfo.Skins.Length
             };
         }
     }
