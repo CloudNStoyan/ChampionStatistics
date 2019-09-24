@@ -4,34 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" KeyDown="MainWindowKeyDown">
+        Title="Champion Info" Height="450" Width="800" KeyDown="MainWindowKeyDown">
     <Grid>
         <TextBox x:Name="InputBox" Height="45" Width="175" BorderBrush="Aqua" BorderThickness="0,0,0,1" 
                  TextAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="SlateGray"
                  CaretBrush="SlateGray" TextChanged="InputBoxTextChanged" KeyDown="InputBoxKeyDown"/>
-        <Grid x:Name="MainGrid" Visibility="Visible">
+        <Grid x:Name="MainGrid" Visibility="Hidden">
             <Rectangle Height="80" Width="80" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Stroke="Crimson">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="{Binding Image}" />
                 </Rectangle.Fill>
             </Rectangle>
             <StackPanel Orientation="Horizontal" Margin="100,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <TextBlock Text="{Binding Name}" FontSize="32" Foreground="Crimson" FontFamily="segoe ui"/>
-                <TextBlock Text="{Binding Title}" FontSize="22" Foreground="DarkRed" Margin="10,0,0,0" FontFamily="segoe ui"/>
+                <TextBlock Text="{Binding Name}" FontSize="32" Foreground="Crimson" FontFamily="Lucida Sans" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Title}" FontSize="22" Foreground="DarkRed" Margin="10,0,0,0" FontFamily="Lucida Sans" FontStyle="Italic"/>
             </StackPanel>
-            <TextBlock Margin="100,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Tag}" FontFamily="segoe ui"/>
+            <TextBlock Margin="100,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Tag}" FontFamily="Lucida Sans" FontWeight="DemiBold" Foreground="DarkGreen"/>
             <ScrollViewer VerticalScrollBarVisibility="Hidden" Height="300" Margin="10,100,0,0" Width="250" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <StackPanel x:Name="Stats"/>
-            </ScrollViewer>
+            </ScrollViewer> 
             <TabControl VerticalAlignment="Top" HorizontalAlignment="Left" Margin="270,100,0,0">
                 <TabItem Header="Lore">
                     <Grid Height="300" Width="500">
-                        <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Lore}" FontFamily="segoe ui"/>
+                        <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Lore}" FontFamily="Lucida Sans"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Tips">
                     <Grid Height="300" Width="500">
-                        <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Tips}" FontFamily="segoe ui"/>
+                        <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Tips}" FontFamily="Lucida Sans"/>
                     </Grid>
                 </TabItem>
             </TabControl>
