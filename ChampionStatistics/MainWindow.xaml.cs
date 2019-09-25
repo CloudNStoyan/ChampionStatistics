@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using ChampionStatistics.RiotObject;
+using Image = System.Windows.Controls.Image;
 using Key = System.Windows.Input.Key;
 
 namespace ChampionStatistics
@@ -21,6 +26,8 @@ namespace ChampionStatistics
             this.Champions = ChampionInfo.FromJson(File.ReadAllText("./championInfo.json"));
             this.MainDDragon = new DDragon(Path.GetFullPath("./ddragontai-9.18.1/"), "9.18.1");
 
+            this.InputBox.Visibility = Visibility.Visible;
+            this.MainGrid.Visibility = Visibility.Hidden;
             this.InputBox.Focus();
         }
 
@@ -53,6 +60,41 @@ namespace ChampionStatistics
 
             this.MainGrid.Visibility = Visibility.Visible;
             this.MainGrid.DataContext = ChampionModel.Parse(champion, this.MainDDragon);
+
+            this.SkinGallery.Children.Clear();
+
+            foreach (var championSkin in champion.Skins)
+            {
+                string skin = this.MainDDragon.Img.Champion.Splash($"{champion.Id}_{championSkin.Num}.jpg");
+
+                this.SkinGallery.Children.Add(new TextBlock
+                {
+                    Text = championSkin.Name,
+                    Margin = new Thickness(0, 10, 0, 0),
+                    FontSize = 18,
+                    FontFamily = new FontFamily("Lucida Sans"),
+                    FontWeight = FontWeights.ExtraBold,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                });
+
+                var contextMenu = new ContextMenu();
+                var menuItem = new MenuItem {Header = "Open as picture."};
+                menuItem.Click += (sender, args) => Process.Start(skin);
+
+                contextMenu.Items.Add(menuItem);
+
+                this.SkinGallery.Children.Add(new Image
+                {
+                    Source = new BitmapImage(new Uri(skin)),
+                    Height = 250,
+                    Width = 500,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Margin = new Thickness(0,10,0,0),
+                    Stretch = Stretch.Uniform,
+                    ContextMenu = contextMenu
+                });
+            }
+
             this.Stats.Children.Clear();
             var stats = this.ParseStatNames(champion.Stats.ToArray()).Select(x => new[]
             {

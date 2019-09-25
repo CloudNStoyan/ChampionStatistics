@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Champion Info" Height="450" Width="800" KeyDown="MainWindowKeyDown">
+        Title="ChampionFolder Info" Height="450" Width="800" KeyDown="MainWindowKeyDown">
     <Grid>
         <TextBox x:Name="InputBox" Height="45" Width="175" BorderBrush="Aqua" BorderThickness="0,0,0,1" 
                  TextAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="SlateGray"
-                 CaretBrush="SlateGray" TextChanged="InputBoxTextChanged" KeyDown="InputBoxKeyDown"/>
-        <Grid x:Name="MainGrid" Visibility="Hidden">
+                 CaretBrush="SlateGray" TextChanged="InputBoxTextChanged" KeyDown="InputBoxKeyDown" Visibility="Hidden"/>
+        <Grid x:Name="MainGrid">
             <Rectangle Height="80" Width="80" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Stroke="Crimson">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="{Binding Image}" />
@@ -25,19 +25,21 @@
             </ScrollViewer> 
             <TabControl VerticalAlignment="Top" HorizontalAlignment="Left" Margin="270,100,0,0">
                 <TabItem Header="Lore">
-                    <Grid Height="300" Width="500">
+                    <Grid Height="250" Width="500">
                         <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Lore}" FontFamily="Lucida Sans"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Tips">
-                    <Grid Height="300" Width="500">
+                    <Grid Height="250" Width="500">
                         <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Tips}" FontFamily="Lucida Sans"/>
                     </Grid>
                 </TabItem>
-                <TabItem>
-                    <ScrollViewer>
-                        <StackPanel x:Name="SkinGallery"></StackPanel>
-                    </ScrollViewer>
+                <TabItem Header="Skins">
+                    <Grid Height="250" Width="500">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                            <StackPanel x:Name="SkinGallery"/>
+                        </ScrollViewer>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </Grid>

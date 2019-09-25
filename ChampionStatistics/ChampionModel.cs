@@ -24,11 +24,11 @@ namespace ChampionStatistics
                 Name = championInfo.Name,
                 Stats = championInfo.Stats.ToArray(),
                 Title = championInfo.Title,
-                Image = new Uri(dDragon.Img.Champion(championInfo.Image.Full)),
+                Image = new Uri(dDragon.VersionImg.Champion(championInfo.Image.Full)),
                 Lore = championInfo.Lore,
                 Tag = string.Join(", ", championInfo.Tags.Select(x => x.ToString())),
                 Tips = "Ally tips:\r\n" + string.Join("\r\n", championInfo.Allytips) + "\r\nEnemy tips:\r\n" + string.Join("\r\n", championInfo.Enemytips),
-                Spells = championInfo.Spells.Select(x => new Uri(dDragon.Img.Spell(x.Image.Full))).ToArray(),
+                Spells = championInfo.Spells.Select(x => new Uri(dDragon.VersionImg.Spell(x.Image.Full))).ToArray(),
                 SkinCount = championInfo.Skins.Length
             };
         }

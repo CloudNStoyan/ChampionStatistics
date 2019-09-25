@@ -6,25 +6,27 @@ namespace ChampionStatistics.RiotObject
     {
         private string DataDragonFolder { get; }
         private string DataDragonVersion { get; }
-        public DataObject Data { get; }
+        public VersionDataObject VersionData { get; }
+        public VersionImgObject VersionImg { get; }
         public ImgObject Img { get; }
 
         public DDragon(string dataDragonFolder, string version)
         {
             this.DataDragonFolder = dataDragonFolder;
             this.DataDragonVersion = version;
-            this.Data = new DataObject("en_US", this);
+            this.VersionData = new VersionDataObject("en_US", this);
+            this.VersionImg = new VersionImgObject(this);
             this.Img = new ImgObject(this);
         }
 
         public string Languages => File.ReadAllText(this.DataDragonFolder + "/languages.json");
 
-        public class DataObject
+        public class VersionDataObject
         {
             private string DataFolder { get; }
             private DDragon Dragon { get; }
 
-            public DataObject(string language, DDragon dragon)
+            public VersionDataObject(string language, DDragon dragon)
             {
                 this.DataFolder = dragon.DataDragonFolder + "/" + dragon.DataDragonVersion + "/data/" + language;
                 this.Dragon = dragon;
@@ -43,24 +45,53 @@ namespace ChampionStatistics.RiotObject
             public string SpecificChampion(string champion) => File.ReadAllText(this.DataFolder + "/champion/" + champion + ".json");
         }
 
+        public class VersionImgObject
+        {
+            private string VersionImgFolder { get; }
+            private DDragon Dragon { get; }
+            public VersionImgObject(DDragon dragon)
+            {
+                this.Dragon = dragon;
+                this.VersionImgFolder = Path.Combine(dragon.DataDragonFolder + "/" + dragon.DataDragonVersion + "/img");
+            }
+
+            public string Champion(string champion) => Path.Combine(this.VersionImgFolder + "/champion/" + champion);
+            public string Item(string item) => this.VersionImgFolder + "/item/" + item;
+            public string Map(string map) => this.VersionImgFolder + "/map/" + map;
+            public string Mission(string mission) => this.VersionImgFolder + "/mission/" + mission;
+            public string Passive(string passive) => this.VersionImgFolder + "/passive/" + passive;
+            public string ProfileIcon(string profileIcon) => this.VersionImgFolder + "/profileicon/" + profileIcon;
+            public string Spell(string spell) => this.VersionImgFolder + "/spell/" + spell;
+            public string Sprite(string sprite) => this.VersionImgFolder + "/sprite/" + sprite;
+        }
+
         public class ImgObject
         {
-            private string ImgFolder { get; }
             private DDragon Dragon { get; }
+            public ChampionFolder Champion { get; }
+            private string ImgFolder { get; }
+
             public ImgObject(DDragon dragon)
             {
                 this.Dragon = dragon;
-                this.ImgFolder = Path.Combine(dragon.DataDragonFolder + "/" + dragon.DataDragonVersion + "/img");
+                this.ImgFolder = Path.Combine(dragon.DataDragonFolder + "img\\");
+                this.Champion = new ChampionFolder(this);
             }
 
-            public string Champion(string champion) => Path.Combine(this.ImgFolder + "/champion/" + champion);
-            public string Item(string item) => this.ImgFolder + "/item/" + item;
-            public string Map(string map) => this.ImgFolder + "/map/" + map;
-            public string Mission(string mission) => this.ImgFolder + "/mission/" + mission;
-            public string Passive(string passive) => this.ImgFolder + "/passive/" + passive;
-            public string ProfileIcon(string profileIcon) => this.ImgFolder + "/profileicon/" + profileIcon;
-            public string Spell(string spell) => this.ImgFolder + "/spell/" + spell;
-            public string Sprite(string sprite) => this.ImgFolder + "/sprite/" + sprite;
+            public class ChampionFolder
+            {
+                private ImgObject ImgObject { get; }
+
+                public ChampionFolder(ImgObject imgObject)
+                {
+                    this.ImgObject = imgObject;
+                }
+
+                public string Splash(string key)
+                {
+                    return $"{this.ImgObject.ImgFolder}champion\\splash\\{key}";
+                }
+            }
         }
     }
 }
