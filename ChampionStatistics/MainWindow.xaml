@@ -34,6 +34,11 @@
                         <TextBox AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Tips}" FontFamily="Lucida Sans"/>
                     </Grid>
                 </TabItem>
+                <TabItem>
+                    <ScrollViewer>
+                        <StackPanel x:Name="SkinGallery"></StackPanel>
+                    </ScrollViewer>
+                </TabItem>
             </TabControl>
         </Grid>
     </Grid>
