@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ChampionStatistics.RiotObject;
+using ChampionStatistics.Static;
 using Image = System.Windows.Controls.Image;
 using Key = System.Windows.Input.Key;
 
@@ -72,7 +73,7 @@ namespace ChampionStatistics
                     Text = championSkin.Name,
                     Margin = new Thickness(0, 10, 0, 0),
                     FontSize = 18,
-                    FontFamily = new FontFamily("Lucida Sans"),
+                    FontFamily = FontFamilies.LucidaSans,
                     FontWeight = FontWeights.ExtraBold,
                     HorizontalAlignment = HorizontalAlignment.Center
                 });
