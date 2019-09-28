@@ -56,6 +56,7 @@ namespace ChampionStatistics
 
             if (champion == null)
             {
+                this.MainAlert.Visibility = Visibility.Visible;
                 return;
             }
 

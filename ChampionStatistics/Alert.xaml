@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="400">
     <Grid>
+        <TextBlock x:Name="Title" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Padding="6"/>
         <Button Content="[X]" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="6" 
                 Background="Gray" Foreground="White" BorderThickness="1" BorderBrush="Black" VerticalContentAlignment="Center" Click="ButtonBase_OnClick"/>
         <TextBlock Margin="0,40,0,0" x:Name="TextArea"/>
