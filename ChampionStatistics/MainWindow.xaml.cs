@@ -32,22 +32,16 @@ namespace ChampionStatistics
             this.InputBox.Focus();
         }
 
-        private void InputBoxTextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textbox = (TextBox) sender;
-
-
-        }
-
         private void InputBoxKeyDown(object sender, KeyEventArgs e)
         {
-            var textbox = (TextBox)sender;
-
-            if (e.Key == Key.Enter)
+            if (e.Key != Key.Enter)
             {
-                this.SearchChampion(textbox.Text.Trim());
-                textbox.Visibility = Visibility.Hidden;
+                return;
             }
+
+            var textbox = (TextBox)sender;
+            this.SearchChampion(textbox.Text.Trim());
+            textbox.Visibility = Visibility.Hidden;
         }
 
         private void SearchChampion(string championName)

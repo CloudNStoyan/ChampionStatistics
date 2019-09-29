@@ -9,7 +9,7 @@
     <Grid>
         <TextBox x:Name="InputBox" Height="45" Width="175" BorderBrush="Aqua" BorderThickness="0,0,0,1" 
                  TextAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="SlateGray"
-                 CaretBrush="SlateGray" TextChanged="InputBoxTextChanged" KeyDown="InputBoxKeyDown" Visibility="Hidden"/>
+                 CaretBrush="SlateGray" KeyDown="InputBoxKeyDown" Visibility="Hidden"/>
         <Grid x:Name="MainGrid">
             <Rectangle Height="80" Width="80" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Stroke="Crimson">
                 <Rectangle.Fill>
