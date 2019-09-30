@@ -59,6 +59,8 @@ namespace ChampionStatistics
 
             this.SkinGallery.Children.Clear();
 
+            var skinMargin = new Thickness(0, 10, 0, 0);
+
             foreach (var championSkin in champion.Skins)
             {
                 string skin = this.MainDDragon.Img.Champion.Splash($"{champion.Id}_{championSkin.Num}.jpg");
@@ -66,7 +68,7 @@ namespace ChampionStatistics
                 this.SkinGallery.Children.Add(new TextBlock
                 {
                     Text = championSkin.Name,
-                    Margin = new Thickness(0, 10, 0, 0),
+                    Margin = skinMargin,
                     FontSize = 18,
                     FontFamily = FontFamilies.LucidaSans,
                     FontWeight = FontWeights.ExtraBold,
@@ -85,7 +87,7 @@ namespace ChampionStatistics
                     Height = 250,
                     Width = 500,
                     HorizontalAlignment = HorizontalAlignment.Center,
-                    Margin = new Thickness(0,10,0,0),
+                    Margin = skinMargin,
                     Stretch = Stretch.Uniform,
                     ContextMenu = contextMenu
                 });
