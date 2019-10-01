@@ -30,6 +30,13 @@ namespace ChampionStatistics
             this.InputBox.Visibility = Visibility.Visible;
             this.MainGrid.Visibility = Visibility.Hidden;
             this.InputBox.Focus();
+
+            this.MainAlert.CloseButton.Click += (o, e) =>
+            {
+                this.InputBox.Visibility = Visibility.Visible;
+                this.MainAlert.Visibility = Visibility.Hidden;
+                this.InputBox.Focus();
+            };
         }
 
         private void InputBoxKeyDown(object sender, KeyEventArgs e)
@@ -51,6 +58,8 @@ namespace ChampionStatistics
             if (champion == null)
             {
                 this.MainAlert.Visibility = Visibility.Visible;
+                this.MainAlert.Title.Text = "Champion not found";
+                this.MainAlert.TextArea.Text = "There is no champion with that name: " + championName;
                 return;
             }
 
