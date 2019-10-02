@@ -57,9 +57,7 @@ namespace ChampionStatistics
 
             if (champion == null)
             {
-                this.MainAlert.Visibility = Visibility.Visible;
-                this.MainAlert.Title.Text = "Champion not found";
-                this.MainAlert.TextArea.Text = "There is no champion with that name: " + championName;
+                this.Alert("Champion not found", "There is no champion with that name: " + championName);
                 return;
             }
 
@@ -128,6 +126,13 @@ namespace ChampionStatistics
 
                 this.Stats.Children.Add(grid);
             }
+        }
+
+        private void Alert(string title, string content)
+        {
+            this.MainAlert.Visibility = Visibility.Visible;
+            this.MainAlert.Title.Text = title;
+            this.MainAlert.TextArea.Text = content;
         }
 
         private KeyValuePair<string, double>[] ParseStatNames(KeyValuePair<string, double>[] stats)
