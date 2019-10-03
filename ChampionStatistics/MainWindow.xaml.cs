@@ -24,8 +24,8 @@ namespace ChampionStatistics
         public MainWindow()
         {
             this.InitializeComponent();
-            this.Champions = ChampionInfo.FromJson(File.ReadAllText("./championInfo.json"));
-            this.MainDDragon = new DDragon(Path.GetFullPath("./ddragontai-9.18.1/"), "9.18.1");
+            this.Champions = ChampionInfo.FromJson(File.ReadAllText(Utils.ChampionInfoPath));
+            this.MainDDragon = new DDragon(Path.GetFullPath(Utils.DDragonMainFolderPath), Utils.DDragonVersion);
 
             this.InputBox.Visibility = Visibility.Visible;
             this.MainGrid.Visibility = Visibility.Hidden;
