@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="ChampionModel.cs" />
     <Compile Include="ConfigManager.cs" />
+    <Compile Include="Lang.cs" />
     <Compile Include="RiotObject\ChampionInfo.cs" />
     <Compile Include="RiotObject\DataDragon.cs" />
     <Compile Include="Static\FontFamilies.cs" />

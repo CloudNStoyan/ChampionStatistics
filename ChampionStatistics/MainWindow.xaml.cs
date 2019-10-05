@@ -57,7 +57,7 @@ namespace ChampionStatistics
 
             if (champion == null)
             {
-                this.Alert("Champion not found", "There is no champion with that name: " + championName);
+                this.Alert(Lang.ChampionNotFound, Lang.NoChampWithThatName + championName);
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace ChampionStatistics
                 });
 
                 var contextMenu = new ContextMenu();
-                var menuItem = new MenuItem {Header = "Open as picture."};
+                var menuItem = new MenuItem {Header = Lang.OpenAsPicture};
                 menuItem.Click += (sender, args) => Process.Start(skin);
 
                 contextMenu.Items.Add(menuItem);
