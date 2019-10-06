@@ -20,6 +20,7 @@ namespace ChampionStatistics
     {
         private ChampionInfo[] Champions { get; }
         private DDragon MainDDragon { get; }
+        private ConfigManager<Config> MainConfig { get; }
 
         public MainWindow()
         {
@@ -30,6 +31,8 @@ namespace ChampionStatistics
             this.InputBox.Visibility = Visibility.Visible;
             this.MainGrid.Visibility = Visibility.Hidden;
             this.InputBox.Focus();
+
+            this.MainConfig = new ConfigManager<Config>("");
 
             this.MainAlert.CloseButton.Click += (o, e) =>
             {

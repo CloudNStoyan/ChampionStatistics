@@ -62,6 +62,7 @@
       <DependentUpon>Alert.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChampionModel.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="ConfigManager.cs" />
     <Compile Include="Lang.cs" />
     <Compile Include="RiotObject\ChampionInfo.cs" />
