@@ -21,6 +21,33 @@
                 <TextBlock Text="{Binding Title}" FontSize="22" Foreground="DarkRed" Margin="10,0,0,0" FontFamily="Lucida Sans" FontStyle="Italic"/>
             </StackPanel>
             <TextBlock Margin="100,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Tag}" FontFamily="Lucida Sans" FontWeight="DemiBold" Foreground="DarkGreen"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100,55,0,0">
+                <Rectangle Width="32" Height="32">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="{Binding Passive}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Width="32" Height="32">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="{Binding Spells[0]}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Width="32" Height="32">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="{Binding Spells[1]}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Width="32" Height="32">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="{Binding Spells[2]}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Width="32" Height="32">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="{Binding Spells[3]}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+            </StackPanel>
             <ScrollViewer VerticalScrollBarVisibility="Hidden" Height="300" Margin="10,100,0,0" Width="250" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <StackPanel x:Name="Stats"/>
             </ScrollViewer> 

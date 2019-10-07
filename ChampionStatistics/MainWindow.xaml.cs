@@ -32,8 +32,6 @@ namespace ChampionStatistics
             this.MainGrid.Visibility = Visibility.Hidden;
             this.InputBox.Focus();
 
-            this.MainConfig = new ConfigManager<Config>("");
-
             this.MainAlert.CloseButton.Click += (o, e) =>
             {
                 this.InputBox.Visibility = Visibility.Visible;

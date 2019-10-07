@@ -1,4 +1,4 @@
-﻿namespace ChampionStatistics
+﻿namespace ChampionStatistics.Static
 {
     public class Lang
     {
