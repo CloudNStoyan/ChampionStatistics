@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Media;
 using ChampionStatistics.RiotObject;
 
 namespace ChampionStatistics
@@ -49,9 +50,17 @@ namespace ChampionStatistics
 
             foreach (var spell in spells)
             {
-                var stackPanel = new StackPanel();
+                var stackPanel = new StackPanel
+                {
+                    Background = Brushes.DarkSlateBlue
+                };
 
-                var textBlock = new TextBlock {Text = spell.Tooltip};
+                var textBlock = new TextBlock
+                {
+                    Text = spell.Tooltip,
+                    Foreground = Brushes.Crimson
+                };
+
                 stackPanel.Children.Add(textBlock);
                 list.Add(stackPanel);
             }
